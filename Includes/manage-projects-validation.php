@@ -1,0 +1,1 @@
+    <script src="../../Scripts/ManageProjects/validation.js"></script>

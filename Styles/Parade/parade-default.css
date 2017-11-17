@@ -1,0 +1,376 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html { 
+    height: 101%; 
+    font-family:"Hammersmith One", Georgia, Serif; background: #fff;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;}
+
+html, body
+{
+    font-size: 80%; 
+    /*font-family: Helvetica, Arial, sans-serif; line-height: 15%;*/
+    font-family:"Hammersmith One", Georgia, Serif; background: #fff;
+    margin: 0px;
+    margin-top: 0px;
+    margin-right-value: 0px;
+    margin-bottom: 0px;
+    margin-left-value: 0px;
+    margin-left-ltr-source: physical;
+    margin-left-rtl-source: physical;
+    margin-right-ltr-source: physical;
+    margin-right-rtl-source: physical;
+    /*background: url("background1.jpg") no-repeat center center fixed;?*/
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height:100%;
+    overflow: hidden;
+}
+
+body {
+    margin-top: 0px;  /*altered due to white bar at top of page (was set to 100px)*/
+    margin-bottom: 150px;
+}
+ul { line-height: 120%;}
+
+h2:after,
+h3:after,
+h4:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 5px;
+    border-radius: 2px;
+    box-shadow:
+        inset 0 1px 1px rgba(0,0,0,0.5),
+        0 1px 1px rgba(255,255,255,0.3);
+}
+
+h2:after { background: #0AF; 
+            margin-left: 10px;}
+h3:after { background: #3BF; 
+            margin-left: 10px;}
+h4:after { background: #6Cf; 
+            margin-left: 10px;}
+
+h1 {
+    font-size: 36px;
+    line-height: 40px;
+    /*margin: 1em 0 .6em 0;*/
+    font-weight: normal;
+    color: white;
+    /*font-family: 'Hammersmith One', sans-serif;*/
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    color: #6Cf;
+
+}
+
+h2 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    color: white;
+    /*font-family: 'Hammersmith One', sans-serif;*/
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    font-size: 30px;
+    line-height: 40px;
+}
+
+h3 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    color: white;
+    /*font-family: 'Hammersmith One', sans-serif;*/
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    font-size: 24px;
+    line-height: 40px;
+    /*font-family: 'Questrial', sans-serif;*/
+}
+
+h4 {
+    margin: 1em 0 .6em 0;
+    padding: 0 0 0 20px;
+    font-weight: normal;
+    color: white;
+    /*font-family: 'Hammersmith One', sans-serif;*/
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+    position: relative;
+    font-size: 18px;
+    line-height: 20px;
+    /*font-family: 'Questrial', sans-serif;*/
+}
+
+
+.body_container {
+    margin-left:2%;
+    margin-right:2%;
+    /*margin-top:4%;*/
+    margin-top: 10%;
+    margin-bottom:10%;
+    position: absolute;
+    max-height:70%;
+    width:95%;
+}
+
+/*         HEADER           */
+.header {
+            background: #2c3e50;
+            color: #fff;
+            box-shadow: 0px 3px 20px #000;
+
+            color: #ffffff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+            top: 0;
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            z-index: 100;
+        }
+        .header .hash_container {
+            width: 350px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        
+        .header .hash_container .hash {
+            /*text-transform: uppercase;*/
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+        .header .hash_container .hash .twitter-icon {
+            margin: 0 2px -4px 0;
+            width: 28px;
+            height: 24px;
+        }
+        .header .filler_space {
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .header .filler_space img {
+            max-height: 100px;
+        }
+        .header .filler_space .filler {
+            text-transform: uppercase;
+            font-size: 23px;
+            font-weight: 600
+        }
+        .header .uploaded_logo {
+            width: 350px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .header .uploaded_logo .uploaded_logo_img {
+             max-height: 95px;
+             max-width: 320px;
+        }
+
+
+
+/******************************************************************
+                            FOOTER
+******************************************************************/
+
+.footer {
+            background: #2c3e50;
+            color: #fff;
+            box-shadow: 0px 3px 20px #000;
+            color: #ffffff;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+            bottom: 0;
+            height: 100px;
+            width: 100%;
+            position: absolute;
+            /*font-family: "freight-sans-pro",'FreightSans','Helvetica Neue',Helvetica,Arial,sans-serif;*/
+            z-index: 100;
+            margin-bottom:-3px;
+        }
+
+        .tweetwall_logo {
+            width: 350px;
+            height: 100px;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .tweetwallcom_logo {
+             max-height: 80px;
+             max-width: 320px;
+        }
+
+
+
+/*Main Content Layout*/
+.vertical-container {
+    /*display: -webkit-flex;
+    display: flex;*/
+    /*padding-top: 50px;*/
+    height: 100%;
+}
+
+.tweet-box {
+    display:inline-block;
+    float:left;
+    width: 70%;
+    height:100%;
+    margin:auto;
+    /*margin-top:75px;*/
+}
+
+#media-box {
+    /*margin-top: 2%;*/
+    float:right;
+    height: 80%;
+    width: 30%;
+    overflow:hidden;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+    background: rgba(41,47,51,0.5);
+    min-height: 80%;
+}
+
+
+#media-box .media-header{
+    height:10%;
+    overflow: hidden;
+    width:100%;
+}
+#media-box .media-body{
+    height:85%;
+    /*padding-top: 30px;*/
+}
+
+#media-box .media-content {
+    height:100%;
+    width:100%;
+    /*display:block;*/
+    /*position:relative;*/
+
+}
+
+#media-box .media-body img {
+    margin: auto auto;
+    margin-bottom: 5%;
+
+    overflow:hidden;
+    display: block;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+
+    max-height: 80%;
+    max-width: 90%;
+}
+
+/* Tweet Information */
+
+#tweet {
+    display:inline-block;
+    height:100%;
+    width: 100%;
+
+
+    display: inline-block;
+    overflow: hidden;
+    float:left;
+    margin-top:auto;
+    margin-bottom:auto;
+}
+
+#tweet .profile-image {
+    /*border:1px;*/
+    /*Margin relative to the container*/
+    margin-top:3%;
+
+    float: left;
+    display: block;
+    overflow:hidden;
+    margin-right: 10px;
+
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+}
+#tweet .profile-image img {
+    /*Margin relative to the container*/
+    margin-top:3%;
+
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+
+    padding: 4px;
+    background: #FFDBFF;
+    overflow:hidden;
+    max-height: 150px;
+    max-width: 150px;
+    min-height: 120px;
+    /*max-height:30%;
+    max-width: 30%;
+    min-height: 20%;*/
+}
+
+#tweet .data { 
+    /*Margin relative to the container*/
+    margin-top:3%;
+
+    float: left; 
+    display: inline-block; 
+    position: relative;
+
+    width: 80%; 
+    padding:4px; 
+    background: rgba(41,47,51,0.5); 
+    overflow:  hidden; 
+
+
+    box-sizing: border-box; 
+    -moz-box-sizing: border-box;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius:25px;
+}
+
+#text {margin-left: 10px;}
+
+#tweet .data h1 { padding-left:10px; color: white; line-height: 1.6em; text-shadow: 0px 5px 5px black; }
+#tweet .data h3 { padding-left:10px;  color: white; line-height: 0.9em; margin-bottom: 5px; text-shadow: 0px 3px 3px black;}
+#tweet .data h4 { padding-left:10px; font-size: 1.2em; line-height: 1.3em; }
+
+/*Separator*/
+/*#tweet .data .separator { clear: both; margin-top: 40px; width: 350px; height: 1px; border-bottom: 2px solid #fff; margin-bottom: 0; }*/
+#tweet .data ul.numbers { clear:both; margin-top: 40px; list-style: none; width: 450px; padding-top: 10px; border-top: 3px solid #fff; color: floralwhite;}
+#tweet .data ul.numbers li { width: 125px; float: left; display: block; padding-left: 0px; height: 50px; border-right: 4px dotted floralwhite; text-transform: uppercase; text-align: center;}
+#tweet .data ul.numbers li strong { color: floralwhite; display: block; font-size: 3.4em; line-height: 1.1em; font-weight: bold; }
+
+
+.user-statistics {float:right; padding-bottom: 15px; padding-right: 5px;}
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+
+/* Ensure last element doesn't have a border */
+.nobrdr { border: 0px !important; }
+

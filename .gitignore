@@ -1,0 +1,4 @@
+#  Ignore configuration files (containing passwords, API keys, etc.)
+####################################################################
+config*.*
+

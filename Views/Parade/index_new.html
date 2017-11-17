@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- To make page responsive based on browser size -->
+	<title>Tweet Parade</title>
+	<link rel="stylesheet" type="text/css" href="assets/styles/fonts.css"> <!-- Font family reference -->
+	<link rel="stylesheet" type="text/css" href="assets/styles/normalize.css"> <!-- Base styling defaults -->
+	<link rel="stylesheet" type="text/css" href="assets/styles/styles.css"> <!-- Styling for page -->
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../../Scripts/Parade/get-tweets.js"></script>
+    
+</head>
+
+<body>
+
+	<header class="tweet-parade-header">
+		<h1 class="tweet-parade-header__logo">Tweet Parade</h1>
+	</header>
+
+	<main>
+		<section class="tweet-parade-contain">
+			<div class="tweet-card"> <!-- Container for tweet details section - avatar, handle, time, tweet -->
+				<div class="tweet-card__details">
+					<img class="tweet-card__avatar" src="assets/images/avatar.jpg">
+					<span class="tweet-card__handle">@RockyDennis</span>
+
+					<span class="tweet-card__time-tag">2hrs ago</span>
+
+					<span class="tweet-card__title">Recent tweet</span>
+
+					<p class="tweet-card__tweet">These things are good: ice cream and cake, a ride on a Harley, seeing monkeys in the trees, the rain on my tongue, and the sun shining on my face. These things are a drag: dust in my hair, holes in my shoes, no money in my pocket, and the sun shining on my face.</p>
+				</div>
+
+				<div class="tweet-card__media"> <!-- Media container which will include the media title and media image uploaded -->
+					<span class="tweet-card__media-title">Media attached</span>
+
+					<img class="tweet-card__media-image" src="assets/images/landscape.jpg">
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer>David Hamilton &copy; 2016</footer>
+
+</body>
+
+</html>

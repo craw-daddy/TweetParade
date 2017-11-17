@@ -1,0 +1,4 @@
+Much of the original functionality was coded by Thomas Gorry and
+David Hamilton, while they were graduate students at the
+University of Liverpool in the Department of Computer Science.
+

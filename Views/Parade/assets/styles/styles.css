@@ -1,0 +1,232 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+
+main {
+	width: 100%;
+	/*background: #55acee;*/
+}
+
+.tweet-parade-header {
+	text-align: center;
+	/*background: #2d597a;*/
+}
+
+.tweet-parade-header:after {
+	content: '';
+	position: relative;
+	top: 0px;
+	left: 0px;
+	display: block;
+	height: 40px;
+	width: 100%;
+	
+	/* To create the arrows in the after psuedo element */
+/*	background: linear-gradient(#55acee 0%, transparent 0%), linear-gradient(135deg, #55acee 33.33%, transparent 33.33%) 0 0%, #55acee linear-gradient(45deg, #55acee 33.33%, #2d597a 33.33%) 0 0%;
+	background: -webkit-linear-gradient(#55acee 0%, transparent 0%), -webkit-linear-gradient(135deg, #55acee 33.33%, transparent 33.33%) 0 0%, #55acee -webkit-linear-gradient(45deg, #55acee 33.33%, #2d597a 33.33%) 0 0%;
+	background: -o-linear-gradient(#55acee 0%, transparent 0%), -o-linear-gradient(135deg, #55acee 33.33%, transparent 33.33%) 0 0%, #55acee -o-linear-gradient(45deg, #55acee 33.33%, #2B3A48 33.33%) 0 0%;
+	background: -moz-linear-gradient(#55acee 0%, transparent 0%), -moz-linear-gradient(135deg, #55acee 33.33%, transparent 33.33%) 0 0%, #55acee -moz-linear-gradient(45deg, #55acee 33.33%, #2d597a 33.33%) 0 0%;
+	background-repeat: repeat-x;
+	background-size: 0px 100%, 30px 50px, 30px 50px;*/
+}
+
+.tweet-parade-header__logo {
+	display: block;
+	margin: 0;
+	padding: 40px 0;
+	color: #fff;
+	font-size: 92px;
+	font-weight: 300;
+	font-family: 'lobsterbold';
+	line-height: 1;
+}
+
+@media only screen and (max-width: 680px) {
+	.tweet-parade-header__logo {
+		padding: 20px 0;
+		font-size: 48px;
+	}
+}
+
+.tweet-parade-contain {
+	display: block;
+	margin: 0 auto;
+	padding: 100px 0;
+	max-width: 980px;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+@media only screen and (max-width: 680px) {
+	.tweet-parade-contain {
+		padding: 50px 0;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.tweet-parade-contain {
+		padding: 50px 15px;
+	}
+}
+
+.tweet-card {
+	/* Include Flex - improves items alignment, directions and order in the container with dynamic or even unknown size elements */
+	display: -webkit-flex;
+  	display: flex;
+	margin: 0 auto;
+	padding: 15px;
+	max-width: 900px;
+	width: 100%;
+	box-sizing: border-box;
+	background: #fff;
+	border-radius: 10px;
+	
+	/* Box shadow for twitter card */
+	-webkit-box-shadow: -3px 3px 0px 3px rgba(82, 164, 226, 1);
+	-moz-box-shadow: -3px 3px 0px 3px rgba(82, 164, 226, 1);
+	box-shadow: -3px 3px 0px 3px rgba(82, 164, 226, 1);
+}
+
+.tweet-card__details {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.tweet-card__avatar {
+	display: inline-block;
+	margin-right: 10px;
+	height: auto;
+    width: 100px;
+	vertical-align: top;
+	border-style: solid;
+	border: 10px 10px 10px 10px;
+    border-radius: 10px;
+	
+	-webkit-box-shadow: -3px 2px 0px 2px rgba(235,235,235,1);
+	-moz-box-shadow: -3px 2px 0px 2px rgba(235,235,235,1);
+	box-shadow: -3px 2px 0px 2px rgba(235,235,235,1);
+}
+
+.tweet-card__handle {
+	display: inline-block;
+	padding: 10px 0;
+	max-width: 250px;
+	vertical-align: top;
+	color: #55acee;
+	font-size: 20px;
+	font-family: 'open_sansbold';
+	word-wrap: break-word;
+}
+
+@media only screen and (max-width: 500px) {
+	.tweet-card__handle {
+		max-width: 200px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.tweet-card__handle {
+		max-width: 125px;
+		font-size: 16px;
+	}
+}
+
+.tweet-card__time-tag {
+	position: absolute;
+	top: 105px;
+    right: 0;
+    display: block;
+    padding: 8px 30px;
+	color: #fff;
+	font-size: 12px;
+	font-family: 'open_sanslight';
+    letter-spacing: 5px;
+	text-transform: uppercase;
+    background: #2d597a;
+    border-radius: 5px 0 0 5px;
+}
+
+@media only screen and (max-width: 400px) {
+	.tweet-card__time-tag {
+		padding: 8px 15px;
+    	font-size: 10px;
+	}
+}
+
+.tweet-card__tweet {
+	display: block;
+    margin: 0;
+	font-size: 14px;
+    font-family: 'open_sansregular';
+    line-height: 1.6;
+}
+
+@media only screen and (max-width: 400px) {
+	.tweet-card__tweet {
+		font-size: 12px;
+	}
+}
+
+.tweet-card__media {
+    display: inline-block;
+	margin-left: 5%;
+	max-width: 500px; /* Will never be wider than the value specified even if the width property is set to be wider */
+    height: auto;
+	width: 100%; /* With the max width set the container will make use of 100% of the 500px max width specified. */
+    vertical-align: top;
+}
+
+.tweet-card__title {
+	display: block;
+	margin: 20px 0;
+	width: 100%;
+	font-size: 12px;
+	font-family: 'open_sanslight';
+}
+
+.tweet-card__title:after {
+	content: '';
+	position: relative;
+	bottom: -5px;
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: #ebebeb;
+}
+
+.tweet-card__media-title {
+	display: block;
+	margin: 0 0 20px;
+	width: 100%;
+	font-size: 12px;
+	font-family: 'open_sanslight';
+}
+
+.tweet-card__media-title:after {
+	content: '';
+	position: relative;
+	bottom: -5px;
+	display: block;
+	width: 100%;
+	height: 2px;
+	background: #ebebeb;
+}
+
+.tweet-card__media-image {
+	display: block;
+    margin: 0 auto;
+    width: 100%; /* display 100% of the image in the 500px max width area - it will keep the sharpness and res of the image */
+	height: auto; /* the image will have flexible height, it will be the minimum height to contain  based on the 100% width of the image  and it's 500px max width container */
+    border-radius: 0 0 10px 10px;
+}
+
+footer {
+	padding: 20px 0;
+	color: #fff;
+	font-family: 'open_sanslight';
+	text-align: center;
+	/*background: #2d597a;*/
+}
