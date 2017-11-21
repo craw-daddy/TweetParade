@@ -11,12 +11,12 @@ class db
     
     if($this->dbh = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name)) { 
             
-      // Set every possible option to utf-8
-      mysqli_query($this->dbh, 'SET NAMES "utf8"');
-      mysqli_query($this->dbh, 'SET CHARACTER SET "utf8"');
-      mysqli_query($this->dbh, 'SET character_set_results = "utf8",' .
-        'character_set_client = "utf8", character_set_connection = "utf8",' .
-        'character_set_database = "utf8", character_set_server = "utf8"');
+      // Set every possible option to utf8mb4
+      mysqli_query($this->dbh, 'SET NAMES "utf8mb4"');
+      mysqli_query($this->dbh, 'SET CHARACTER SET "utf8mb4"');
+      mysqli_query($this->dbh, 'SET character_set_results = "utf8mb4",' .
+        'character_set_client = "utf8mb4", character_set_connection = "utf8mb4",' .
+        'character_set_database = "utf8mb4", character_set_server = "utf8mb4"');
     } else {
      echo 'DB CONNECTION ERROR!!!!';
     }

@@ -27,7 +27,7 @@
 
   function startProcess($project_name, $con){
 
-    $collector = "../Collector/get_tweets.php ".$project_name;
+    $collector = "../Collector/get_tweets_new.php ".$project_name;
     $pid = shell_exec('nohup php '.$collector.' > /dev/null & echo $!');
 
       $query = "INSERT INTO pid (pid) VALUES ('";
