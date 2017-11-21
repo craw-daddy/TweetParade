@@ -67,7 +67,7 @@ function createTables($project_name) {
 		  }
 
 		// Create tweets table
-		$sql="CREATE TABLE tweets(id bigint(25) NOT NULL , PRIMARY KEY(id),user_id bigint(20) NOT NULL, text varchar(140) NOT NULL, created_at int(20) NOT NULL, media_url varchar(1024), reviewed tinyint(1) NOT NULL, approved_at int(20), approved tinyint(1) NOT NULL, display_time int(6), display_count int(11), pinned tinyint(1) NOT NULL, profile_img_censored tinyint(1) NOT NULL, media_img_censored tinyint(1) NOT NULL)";
+		$sql="CREATE TABLE tweets(id bigint(25) NOT NULL , PRIMARY KEY(id),user_id bigint(20) NOT NULL, text varchar(300) NOT NULL, created_at int(20) NOT NULL, media_url varchar(1024), reviewed tinyint(1) NOT NULL, approved_at int(20), approved tinyint(1) NOT NULL, display_time int(6), display_count int(11), pinned tinyint(1) NOT NULL, profile_img_censored tinyint(1) NOT NULL, media_img_censored tinyint(1) NOT NULL)";
 
 		// Execute query
 		if ($con->query($sql))
@@ -119,7 +119,7 @@ function createTables($project_name) {
 		  }
 
 		// Create users table
-		$sql="CREATE TABLE users(id bigint(20) NOT NULL , PRIMARY KEY(id),name varchar(20) NOT NULL, screen_name varchar(20) NOT NULL, followers_count int(10) NOT NULL, friends_count int(10) NOT NULL, tweet_count int(10) NOT NULL, geo_enabled int(2) NOT NULL, created_at int(10) NOT NULL, profile_image_url varchar(1024))";
+		$sql="CREATE TABLE users(id bigint(20) NOT NULL , PRIMARY KEY(id),name varchar(20) NOT NULL, screen_name varchar(50) NOT NULL, followers_count int(10) NOT NULL, friends_count int(10) NOT NULL, tweet_count int(10) NOT NULL, geo_enabled int(2) NOT NULL, created_at int(10) NOT NULL, profile_image_url varchar(1024))";
 
 		// Execute query
 		if ($con->query($sql))
