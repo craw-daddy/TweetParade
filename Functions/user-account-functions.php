@@ -39,11 +39,11 @@ function password_check($password, $existing_hash) {
 
 function attempt_login($username, $password) {
 
-    ChromePhp::log("Attempt Login::");
+//    ChromePhp::log("Attempt Login::");
 
     $user = find_user_by_username($username);
 
-    ChromePhp::log("User: ".$user);
+//    ChromePhp::log("User: ".$user);
 
     if($user) {
         //found user, check password
@@ -64,20 +64,20 @@ function attempt_login($username, $password) {
 
 function find_user_by_username($username) {
 
-    ChromePhp::log("Finding User.. " .$username);
+//    ChromePhp::log("Finding User.. " .$username);
     // Create connection
     $mysqli = new mysqli('10.30.0.110', 'tgorry','Lambo1988', 'tweetparade_administrators');
-    ChromePhp::log("Creating connection.. ");
+//    ChromePhp::log("Creating connection.. ");
     // Check connection
     if ($mysqli->connect_errno) {
-       ChromePhp::log("Connection error! " );
+//       ChromePhp::log("Connection error! " );
        echo "Failed to connect to MySQL [Test]: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
-    ChromePhp::log("Connected! " );
+//    ChromePhp::log("Connected! " );
 
     $safe_username = mysqli_real_escape_string($mysqli, $username);
 
-    ChromePhp::log("Making user safe.. " . $safe_username);
+//    ChromePhp::log("Making user safe.. " . $safe_username);
 
     $query = "SELECT * ";
     $query .= "FROM administrators ";

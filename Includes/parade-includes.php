@@ -4,4 +4,5 @@
     <script src="../../Scripts/Parade/get-tweets.js"></script>
     <link href="../../Styles/Parade/parade-default.css" rel="stylesheet" type="text/css">
     <!-- Custom Style -->
-    <?php //include '../../get_selected_style.php' ?>
+    <?php //include '../../get_selected_style.php' 
+    ?>

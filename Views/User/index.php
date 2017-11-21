@@ -8,51 +8,38 @@
     include_once("../../Includes/header-close.php");
 ?>
     <body>
-        <?php include_once("../../Functions/chrome-logger.php");?>
-        <?php include_once("../../Functions/db-functions.php");?>
-        <?php include_once("../../Functions/user-account-functions.php");?>
+        <?php include_once("../../Functions/db-functions.php"); ?>
+        <?php include_once("../../Functions/user-account-functions.php"); ?>
         
         <?php 
-        
-        ChromePhp::log('ChromePHP Debugger::');
-        ChromePhp::log($_POST["submit"]);
-
         if(isset($_POST["submit"])) {
 
             //$required_fields = arry("username", "password");
             //validate_presences($required_fields);
-            $errors;
+//            $errors;
 
             if(empty($errors)) {
                 //attempt login
                 $username = $_POST["username"];
                 $password = $_POST["password"];
 
-                ChromePhp::log($username . $password);
-
                 $found_user = attempt_login($username, $password);
 
-                ChromePhp::log("Found user: ".$found_user);
-
                 if($found_user) {
-                    ChromePhp::log("Found user true");
                     //success
                     //mark the user as logged in
                     $_SESSION["user_id"] = $found_user["id"];
                     $_SESSION["username"] = $found_user["username"];
                     //$_SESSION["project"] = "tweetparade";
-                    ChromePhp::log($found_user["id"]." ".$found_user["username"] );
                     header("Location: ../Admin/index.php"); // redirects
                 }
                 else {
                     //failure
-                    ChromePhp::log("Found user false");
                     $_SESSION["message"] = "Username/Password is incorrect.";
                 }
             }  
        } 
         ?>
-
         <div class="container">
 
           <form action="index.php" method="post" class="form-signin">
@@ -88,15 +75,12 @@
             </div>
           </form>
 
-            
-
         </div> <!-- /container -->
 
     </body>
 <?php
     include_once("../../Includes/footer-open.php");
     include_once("../../Includes/footer-bootstrap.php");
-    include_once("../../Includes/footer-base-style.php");
     include_once("../../Includes/footer-base-style.php");
     include_once("../../Includes/footer-close.php");
 ?>
