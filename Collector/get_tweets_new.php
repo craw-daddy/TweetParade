@@ -153,7 +153,7 @@ class Consumer extends OauthPhirehose
     //         error_log("coordinates attached \n", 3, "/var/tmp/geo-coordinates3.log");
     //}
 
-    if($geo_enabled){
+    if($geo_enabled && ( ($tweet_object->place !== null) || ($tweet_object->coordinates !== null) ) ){
         $coordinates_object = $tweet_object->coordinates;
 
         $coordinates = $coordinates_object->coordinates;

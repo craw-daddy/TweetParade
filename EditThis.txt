@@ -1,0 +1,10 @@
+Can you edit this file?  In other words,
+can you view this, edit, and save this file?
+Russ Martin
+
+
+
+Wow, Vim is quite different to Word
+New line
+Test
+Alex Westcott
