@@ -66,8 +66,8 @@ function createTables($project_name) {
 		  echo "Error creating table: " . mysqli_error($con);
 		  }
 
-		// Create tweets table
-		$sql="CREATE TABLE tweets(id bigint(30) NOT NULL , PRIMARY KEY(id),user_id bigint(30) NOT NULL, text varchar(300) NOT NULL, created_at int(30) NOT NULL, media_url varchar(1024), reviewed tinyint(1) NOT NULL, approved_at int(30), approved tinyint(1) NOT NULL, display_time int(6), display_count int(11), pinned tinyint(1) NOT NULL, profile_img_censored tinyint(1) NOT NULL, media_img_censored tinyint(1) NOT NULL)";
+                // Create tweets table
+                $sql="CREATE TABLE tweets(id bigint(30) NOT NULL , PRIMARY KEY(id),user_id bigint(30) NOT NULL, text varchar(300) NOT NULL, created_at int(30) NOT NULL, retweet_count int (12), favorite_count int (12), media_url varchar(1024), reviewed tinyint(1) NOT NULL, approved_at int(30), approved tinyint(1) NOT NULL, display_time int(6), display_count int(11), pinned tinyint(1) NOT NULL, profile_img_censored tinyint(1) NOT NULL, media_img_censored tinyint(1) NOT NULL)";
 
 		// Execute query
 		if ($con->query($sql))

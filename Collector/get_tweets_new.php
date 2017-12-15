@@ -23,24 +23,14 @@ class Consumer extends OauthPhirehose
 
   }
 
-  // This function is called automatically by the Phirehose class
-  // when a new tweet is received with the JSON data in $status
-  public function enqueueStatus($status) {
-
-    // error_log("Incoming tweet.. \n", 3, "/var/tmp/geo-coordinates6.log");
-
-
-    $tweet_object = json_decode($status);
-
-    // error_log(print_r($tweet_object,true), 3, "/var/tmp/object2.log");
-        
-    // Ignore tweets without a properly formed tweet id value
-    if (!(isset($tweet_object->id_str))) { return;}
-        
-
+  private function handleTweet($tweet_object)
+  {     
+    //error_log($tweet_object."\n", 3, "/var/tmp/tweets.log");
     $tweet_id = $tweet_object->id_str;
     $tweet_text = $tweet_object->text;
     $created_at = $tweet_object->created_at;
+    $retweet_count = $tweet_object->retweet_count;
+    $favorite_count = $tweet_object->favorite_count;
     $media_url = NULL;
     $entities_object = $tweet_object->entities;
 
@@ -87,7 +77,7 @@ class Consumer extends OauthPhirehose
 
     //error_log($user_values."\n", 3, "/var/tmp/geo-coordinates6.log");
     $this->oDB->replaceIntoUsers($user_values);
-    $this->oDB->replaceIntoTweets($tweet_id, $user_id, $tweet_text, $created_at, $media_url, $screen_name);
+    $this->oDB->replaceIntoTweets($tweet_id, $user_id, $tweet_text, $created_at,$retweet_count, $favorite_count, $media_url, $screen_name);
 
     if(array_key_exists('user_mentions', $entities_object)){
         $mentions_object = $entities_object->user_mentions;
@@ -107,6 +97,7 @@ class Consumer extends OauthPhirehose
         }
     }
 
+    //  Hashtag information
     if(array_key_exists('hashtags', $entities_object)){
         $hashtags_object = $entities_object->hashtags;
         foreach($hashtags_object as $hashtags_unit){
@@ -126,6 +117,7 @@ class Consumer extends OauthPhirehose
         }
     }
 
+   //  URL information
    if (array_key_exists('urls', $entities_object)){
         $urls_object = $entities_object->urls;
         foreach($urls_object as $url_unit){
@@ -144,8 +136,7 @@ class Consumer extends OauthPhirehose
                 $start.', '.
                 $end;
         
-            if ($display_url)
-               {  $this->oDB->replaceIntoUrls($urls_values);  }
+            $this->oDB->replaceIntoUrls($urls_values);
         }
    }
     
@@ -153,7 +144,9 @@ class Consumer extends OauthPhirehose
     //         error_log("coordinates attached \n", 3, "/var/tmp/geo-coordinates3.log");
     //}
 
-    if($geo_enabled && ( ($tweet_object->place !== null) || ($tweet_object->coordinates !== null) ) ){
+    //******  Geolocation data
+    //  Is there something useful to put in for gelocation data?  
+    if ( $geo_enabled && ( ($tweet_object->place !== null) || ($tweet_object->coordinates !== null) ) ){
         $coordinates_object = $tweet_object->coordinates;
 
         $coordinates = $coordinates_object->coordinates;
@@ -191,15 +184,65 @@ class Consumer extends OauthPhirehose
         $this->oDB->replaceIntoGeo($geo_values);
     }
 
+    if (array_key_exists('retweeted_status',$tweet_object))
+       {   // echo "FOUND RETWEET\n----------------\n";
+           $retweet = $tweet_object->retweeted_status;
+           $retweet_tweet_id = $retweet->id_str;
+           // echo "SEARCHING FOR RETWEET ID\n-----------------\n";
+           $query = "SELECT * FROM tweets where id = ".$retweet_tweet_id;
+           // echo "MAKING QUERY:   ".$query."\n";
+           $result = mysqli_query($this->oDB->dbh, $query);
+           // echo "NUMBER OF ROWS FOUND:  ".$result->num_rows."\n";
+           // echo "\nMySQL error:  ".mysqli_error($this->oDB->dbh)."\n\n";
+           if ($result->num_rows)
+             {  // echo "FOUND RETWEET IN DB\n-----------------\n";
+                $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                foreach ($row as $key => $value)
+                     {  echo $key."     ".$value."\n";
+                     }
+                // echo "RETWEET ID:  ".$row['id']."\n";
+                $new_retweet_count = max($row['retweet_count'], $retweet->retweet_count);
+                $new_favorite_count = max($row['favorite_count'], $retweet->favorite_count);
+                mysqli_free_result($result);
+                $update_query = "UPDATE tweets SET retweet_count = ".$new_retweet_count;
+                $update_query .= ", favorite_count = ".$new_favorite_count;
+                $update_query .= " WHERE id = ".$retweet_tweet_id;
+                // echo "UPDATE QUERY TO MAKE\n--------------\n";
+                // echo $update_query."\n";
+                $new_result = mysqli_query($this->oDB->dbh, $update_query);
+                echo "\nMySQL error:  ".mysqli_error($this->oDB->dbh)."\n\n";
+             }
+           else
+             {  mysqli_free_result($result);
+                $retweet = $tweet_object->retweeted_status;
+                $this->handleTweet($retweet);   
+             }
+       }
   }
-}
+
+
+  // This function is called automatically by the Phirehose class
+  // when a new tweet is received with the JSON data in $status
+  public function enqueueStatus($status) {
+
+    //  Get the tweet object
+    $tweet_object = json_decode($status);
+    var_dump($tweet_object);
+    echo "\n\n\n\n";
+
+    // Ignore tweets without a properly formed tweet id value
+    if (!(isset($tweet_object->id_str))) { return;}
+
+    // Call the helper function to process the tweet
+    $this->handleTweet($tweet_object);
+  }
+}   
 
 function getKeywords($project_name){
 
-    $con = mysqli_connect(DB_HOST, 
-      DB_USER, DB_PASSWORD, $project_name);
+    $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name);
 
-     $query = "SELECT phrase FROM keywords";
+    $query = "SELECT phrase FROM keywords";
     $result = mysqli_query($con,$query);
 
     $keyword_array = array();

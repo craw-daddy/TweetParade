@@ -11,12 +11,9 @@ class db
     
     if($this->dbh = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name)) { 
             
-      // Set every possible option to utf8mb4
+      // Set every possible option to utf-8
       mysqli_query($this->dbh, 'SET NAMES "utf8mb4"');
       mysqli_query($this->dbh, 'SET CHARACTER SET "utf8mb4"');
-      mysqli_query($this->dbh, 'SET character_set_results = "utf8mb4",' .
-        'character_set_client = "utf8mb4", character_set_connection = "utf8mb4",' .
-        'character_set_database = "utf8mb4", character_set_server = "utf8mb4"');
     } else {
      echo 'DB CONNECTION ERROR!!!!';
     }
@@ -74,7 +71,7 @@ class db
   }
 
     // Update tweets table
-  public function replaceIntoTweets($tweet_id, $user_id, $tweet_text, $created_at, $media_url, $screen_name) {
+  public function replaceIntoTweets($tweet_id, $user_id, $tweet_text, $created_at, $retweet_count, $favorite_count, $media_url, $screen_name) {
 
   	$blackListTest = 0;
   	$whiteListTest = 0;
@@ -116,36 +113,24 @@ class db
 
   	if($whiteListTest == 1){
 
-  		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text . '", ' .strtotime($created_at).', ' .'"'.$media_url.'", '.'1, '.'1, '.'5000, '.'0, '.'0,0,0' ;
-
-  		$query = "REPLACE INTO tweets (id, user_id, text, created_at, media_url, reviewed, approved, display_time, display_count, pinned, profile_img_censored, media_img_censored) VALUES (".$tweet_values.")";
-  	    echo("\r\n");
-  	    echo $query;
-  	    echo("\r\n");
-  	    mysqli_query($this->dbh,$query);
+  		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text . '", '.strtotime($created_at).', '.$retweet_count.', '.$favorite_count.', '.'"'.$media_url.'", '.'1, '.'1, '.'5000, '.'0, '.'0,0,0' ;
 
   	}else if($blackListTest == 1){
 
-   		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text.'",'.strtotime($created_at).', '.'"'.$media_url.'", '.'1, '.'0, '.'5000, '.'0, '.'0,0,0' ;
-
-  	    $query = "REPLACE INTO tweets (id, user_id, text, created_at, media_url, reviewed, approved, display_time, display_count, pinned, profile_img_censored, media_img_censored) VALUES (".$tweet_values.")";
-  	    echo("\r\n");
-  	    echo $query;
-  	    echo("\r\n");
-  	    mysqli_query($this->dbh,$query);
+   		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text . '", '.strtotime($created_at).', '.$retweet_count.', '.$favorite_count.', '.'"'.$media_url.'", '.'1, '.'0, '.'5000, '.'0, '.'0,0,0' ;
 
   	}else{
 
-   		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text.'", '.strtotime($created_at).', '.'"'.$media_url.'", '.'0, '.'0, '.'5000, '.'0, '.'0,0,0' ;
-
-  	    $query = "REPLACE INTO tweets (id, user_id, text, created_at, media_url, reviewed, approved, display_time, display_count, pinned, profile_img_censored, media_img_censored) VALUES (".$tweet_values.")";
-  	    echo("\r\n");
-  	    echo $query;
-  	    echo("\r\n");
-  	    mysqli_query($this->dbh,$query);
-            echo ("\n\nMySQL error:   ".mysqli_error($this->dbh)."\n\n");
+   		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text . '", '.strtotime($created_at).', '.$retweet_count.', '.$favorite_count.', '.'"'.$media_url.'", '.'0, '.'0, '.'5000, '.'0, '.'0,0,0' ;
 
   	}
+
+  	$query = "REPLACE INTO tweets (id, user_id, text, created_at, retweet_count, favorite_count, media_url, reviewed, approved, display_time, display_count, pinned, profile_img_censored, media_img_censored) VALUES (".$tweet_values.")";
+  	echo("\r\n");
+  	echo $query;
+  	echo("\r\n");
+  	mysqli_query($this->dbh,$query);
+        echo ("\n\nMySQL error:   ".mysqli_error($this->dbh)."\n\n");
 
   }
 }
