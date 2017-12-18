@@ -22,7 +22,7 @@
   	require_once('/var/www/html/tweetParade/config.php');
     $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name);
     $test = mysqli_query($con,"SELECT * FROM pid");
-    $collector = "/var/www/html/tweetParade/Collector/get_tweets_new.php ".$project_name;
+    $collector = "/var/www/html/tweetParade/Collector/get_tweets.php ".$project_name;
 
     if( ! mysqli_num_rows($test) ) {
 

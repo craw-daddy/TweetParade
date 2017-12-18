@@ -113,7 +113,7 @@ class db
 
   	if($whiteListTest == 1){
 
-  		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.$tweet_text . '", '.strtotime($created_at).', '.$retweet_count.', '.$favorite_count.', '.'"'.$media_url.'", '.'1, '.'1, '.'5000, '.'0, '.'0,0,0' ;
+  		$tweet_values = $tweet_id.', '.$user_id.', '.'"'.mysqli_real_escape_string($this-dbh,$tweet_text) . '", '.strtotime($created_at).', '.$retweet_count.', '.$favorite_count.', '.'"'.$media_url.'", '.'1, '.'1, '.'5000, '.'0, '.'0,0,0' ;
 
   	}else if($blackListTest == 1){
 
