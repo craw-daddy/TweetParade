@@ -1,5 +1,5 @@
 <?php
-include_once("/var/www/html/tweetParade/Includes/session.php");
+include_once("/var/www/html/dev/Includes/session.php");
 
 $project_name = $_SESSION['project'];
 $layout = $_REQUEST['layout'];

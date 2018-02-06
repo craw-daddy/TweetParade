@@ -2,7 +2,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    include_once("/var/www/html/tweetParade/Includes/session.php");
+    include_once("/var/www/html/dev/Includes/session.php");
     $project_name =  $_SESSION['project'];
 
 
@@ -19,10 +19,10 @@
 
   function start($project_name){
 
-  	require_once('/var/www/html/tweetParade/config.php');
+  	require_once('/var/www/html/dev/config2.php');
     $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name);
     $test = mysqli_query($con,"SELECT * FROM pid");
-    $collector = "/var/www/html/tweetParade/Collector/get_tweets.php ".$project_name;
+    $collector = "/var/www/html/dev/Collector/get_tweets.php ".$project_name;
 
     if( ! mysqli_num_rows($test) ) {
 
@@ -57,7 +57,7 @@
 
   function stop($project_name, $pid = 0){
 
-      require_once('/var/www/html/tweetParade/config.php');
+      require_once('/var/www/html/dev/config.php');
       $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name);
       
   	if($pid == 0){

@@ -8,7 +8,7 @@ $project_name = $argv[1];
 
 // Collect tweets from the Twitter streaming API
 
-require_once('/var/www/html/tweetParade/config2.php');
+require_once('/var/www/html/dev/config2.php');
 
 require_once('libraries/phirehose/Phirehose.php');
 require_once('libraries/phirehose/OauthPhirehose.php');

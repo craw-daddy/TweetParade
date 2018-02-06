@@ -1,5 +1,5 @@
 <?php
-    include_once("/var/www/html/tweetParade/Includes/session.php");
+    include_once("/var/www/html/dev/Includes/session.php");
     $project_name =  $_SESSION['project'] ;
 
   $keyword = $_POST['new_keyword'];
@@ -10,7 +10,7 @@
   else
   {
 
-    require_once('/var/www/html/tweetParade/config.php');
+    require_once('/var/www/html/dev/config.php');
     $con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name);
 
     
@@ -30,7 +30,7 @@
 
    function startProcess($project_name, $con){
 
-    $collector = "/var/www/html/tweetParade/Collector/get_tweets.php ".$project_name;
+    $collector = "/var/www/html/dev/Collector/get_tweets.php ".$project_name;
     $pid = shell_exec('nohup php '.$collector.' > /dev/null & echo $!');
 
       $query = "INSERT INTO pid (pid) VALUES ('";

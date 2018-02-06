@@ -1,5 +1,5 @@
 <?php
-    include_once("/var/html/tweetParade/Includes/session.php");
+    include_once("/var/html/dev/Includes/session.php");
     if (!isset($_SESSION['project'])) {
         header("Location: /index.php"); // redirects
     }

@@ -7,7 +7,7 @@ class db
     // Create a database connection for use by all functions in this class
   function __construct($project_name) {
 
-    require_once('/var/www/html/tweetParade/config2.php');
+    require_once('/var/www/html/dev/config2.php');
     
     if($this->dbh = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, $project_name)) { 
             

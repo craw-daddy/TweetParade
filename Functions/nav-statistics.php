@@ -1,5 +1,5 @@
 <?php
-                require ('/var/www/html/tweetParade/config.php');
+                require ('/var/www/html/dev/config.php');
                 $project_name = $_GET['project_name'];
 
                 // Create connection
